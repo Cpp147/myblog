@@ -16,6 +16,10 @@ const dateFormat = new Intl.DateTimeFormat('zh-CN', {
   month: 'long',
   day: 'numeric',
 });
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -34,6 +38,6 @@ const dateFormat = new Intl.DateTimeFormat('zh-CN', {
   </article>
 
   <nav class="post-nav">
-    <a href="/">← 返回文章列表</a>
+    <a href={base}>← 返回文章列表</a>
   </nav>
 </BaseLayout>
