@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // TODO: 上线前改成你的正式域名，用于生成规范链接
-  site: 'https://example.com',
+  // 正式域名，用于生成规范链接和站点地图
+  site: 'https://myblog-dp2drxf0tpba.edgeone.dev',
   markdown: {
     shikiConfig: {
       themes: {
