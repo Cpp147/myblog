@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = '记录技术、阅读与生活的个人博客。',
+} = Astro.props;
+
+const siteName = '我的博客';
+const year = new Date().getFullYear();
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title === siteName ? siteName : `${title} · ${siteName}`}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href="/">{siteName}</a>
+      <nav>
+        <a href="/" class:list={[{ active: path === '/' }]}>文章</a>
+        <a href="/about/" class:list={[{ active: path.startsWith('/about') }]}>关于</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <span>© {year} {siteName}</span>
+      <span>用 Astro 构建</span>
+    </footer>
+  </body>
+</html>
